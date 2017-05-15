@@ -5,3 +5,4 @@ Provider.js
 connect.js
 utils.js
 umd.js
+!src/*
