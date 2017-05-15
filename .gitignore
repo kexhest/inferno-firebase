@@ -1,0 +1,7 @@
+coverage/
+node_modules/
+index.js
+Provider.js
+connect.js
+utils.js
+umd.js
