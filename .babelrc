@@ -5,6 +5,8 @@
   ],
   "plugins": [
     "syntax-jsx",
-    "inferno"
+    "inferno",
+    "add-module-exports",
+    "transform-es2015-modules-umd"
   ]
 }
