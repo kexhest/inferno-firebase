@@ -65,11 +65,9 @@ promise = promise.then(() => {
     JSON.stringify(pkg, null, '  '),
     'utf-8'
   );
-  fs.writeFileSync(
-    'dist/LICENSE',
-    fs.readFileSync('LICENSE', 'utf-8'),
-    'utf-8'
-  );
+  ['README.md', 'LICENSE'].forEach(file => {
+    fs.writeFileSync(`dist/${file}`, fs.readFileSync(file, 'utf-8'), 'utf-8');
+  });
 });
 
 promise.catch(err => console.error(err.stack)); // eslint-disable-line no-console

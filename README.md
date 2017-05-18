@@ -141,7 +141,7 @@ Inferno.render(
 
 ### License
 
-MIT © 2016 Magnus Bergman <hello@magnus.sexy>; (https://magnus.sexy/)
+MIT © 2016 Magnus Bergman <hello@magnus.sexy> (https://magnus.sexy/)
 
 ## Acknowledgements
 
