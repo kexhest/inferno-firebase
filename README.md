@@ -1,7 +1,12 @@
-Inferno Firebase
-==============
+# [inferno-firebase](https://github.com/magnus-bergman/inferno-firebase)
 
-Inferno bindings for [Firebase](https://firebase.google.com).
+[![NPM version](http://img.shields.io/npm/v/inferno-firebase.svg?style=flat-square)](https://www.npmjs.com/package/inferno-firebase)
+[![NPM downloads](http://img.shields.io/npm/dm/inferno-firebase.svg?style=flat-square)](https://www.npmjs.com/package/inferno-firebase)
+[![Build Status](http://img.shields.io/travis/magnus-bergman/inferno-firebase/master.svg?style=flat-square)](https://travis-ci.org/magnus-bergman/inferno-firebase)
+[![Coverage Status](https://img.shields.io/coveralls/magnus-bergman/inferno-firebase.svg?style=flat-square)](https://coveralls.io/magnus-bergman/inferno-firebase)
+[![Dependency Status](http://img.shields.io/david/magnus-bergman/inferno-firebase.svg?style=flat-square)](https://david-dm.org/magnus-bergman/inferno-firebase)
+
+> Inferno bindings for [Firebase](https://firebase.google.com).
 
 ## Installation
 
@@ -134,9 +139,9 @@ Inferno.render(
 )
 ```
 
-## License
+### License
 
-MIT
+MIT © 2016 Magnus Bergman <hello@magnus.sexy>; (https://magnus.sexy/)
 
 ## Acknowledgements
 

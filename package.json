@@ -1,73 +1,98 @@
 {
+  "private": true,
   "name": "inferno-firebase",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Inferno bindings for Firebase",
-  "author": "Magnus Bergman <hello@magnus.sexy> (http://github.com/magnus-bergman)",
+  "repository": "magnus-bergman/inferno-firebase",
+  "author": "Magnus Bergman <hello@magnus.sexy> (https://magnus.sexy/)",
   "license": "MIT",
-  "scripts": {
-    "lint": "eslint src examples",
-    "test": "node -r babel-register $(npm bin)/tape tests/**/*-test.js",
-    "test:coverage": "node -r babel-register $(npm bin)/isparta cover $(npm bin)/tape -- src/**/*-test.js",
-    "clean": "node -e 'console.log(require(\"./package\").files.join(\"\\n\"))' | xargs rm",
-    "build": "babel src --ignore tests --out-dir .",
-    "postbuild": "node -r babel-register scripts/build-umd.js",
-    "prepublish": "npm run build",
-    "postpublish": "npm run clean",
-    "start": "node -r babel-register examples/server"
-  },
-  "unpkg": "umd.js",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/magnus-bergman/inferno-firebase.git"
-  },
-  "bugs": {
-    "url": "https://github.com/magnus-bergman/inferno-firebase/issues"
-  },
-  "files": [
-    "index.js",
-    "Provider.js",
-    "connect.js",
-    "utils.js",
-    "umd.js"
-  ],
+  "main": "index.js",
+  "module": "index.es6.js",
+  "jsnext:main": "index.es6.js",
   "keywords": [
     "inferno",
     "infernojs",
     "firebase"
   ],
-  "homepage": "https://github.com/magnus-bergman/inferno-firebase",
+  "scripts": {
+    "lint": "eslint src test tools",
+    "format": "prettier --trailing-comma es5 --single-quote --write 'src/**/*.js' 'test/**/*.js' 'tools/**/*.js'",
+    "test": "mocha --compilers js:babel-register --recursive --require jsdom-global/register",
+    "test:watch": "yarn test -- --reporter min --watch",
+    "test:cover": "nyc yarn test --reporter=html && opn coverage/index.html",
+    "coveralls": "nyc yarn test:cover && nyc report --reporter=text-lcov | coveralls",
+    "build": "node tools/build",
+    "prepublish": "npm run build",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --trailing-comma es5 --single-quote --write",
+      "git add"
+    ]
+  },
+  "prettierOptions": {
+    "bracketSpacing": true,
+    "trailingComma": "es5"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "stage-0"
+    ],
+    "plugins": [
+      "transform-runtime",
+      "syntax-jsx",
+      "inferno"
+    ]
+  },
   "devDependencies": {
     "babel-cli": "^6.24.1",
     "babel-core": "^6.24.1",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.0.0",
-    "babel-plugin-add-module-exports": "^0.2.1",
     "babel-plugin-inferno": "^3.2.0",
     "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-es2015-modules-umd": "^6.24.1",
-    "babel-preset-es2015": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.4.0",
     "babel-preset-stage-0": "^6.24.1",
     "babel-register": "^6.24.1",
+    "coveralls": "^2.13.1",
+    "del": "^2.2.2",
     "eslint": "^3.19.0",
-    "eslint-config-airbnb-base": "^11.1.3",
+    "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-inferno": "^6.10.4",
-    "express": "^4.15.2",
-    "firebase": "^3.9.0",
+    "eslint-plugin-jsx-a11y": "^5.0.3",
+    "expect": "^1.20.2",
+    "express": "^4.15.3",
+    "firebase": "^4.0.0",
+    "husky": "^0.13.3",
+    "inferno": "^3.1.2",
+    "inferno-component": "^3.1.2",
+    "inferno-create-element": "^3.1.2",
     "inferno-test-utils": "^3.1.2",
-    "isparta": "^4.0.0",
+    "istanbul": "^1.0.0-alpha.2",
     "jsdom": "^10.1.0",
     "jsdom-global": "^3.0.2",
-    "tape": "^4.6.3",
+    "lint-staged": "^3.4.2",
+    "mocha": "^3.4.1",
+    "nyc": "^10.3.2",
+    "opn-cli": "^3.1.0",
+    "prettier": "^1.3.1",
+    "rollup": "^0.41.6",
+    "rollup-plugin-babel": "^2.7.1",
+    "sinon": "^2.2.0",
     "webpack": "^2.5.1",
     "webpack-dev-middleware": "^1.10.2"
   },
   "dependencies": {
     "invariant": "^2.2.2",
-    "prop-types": "^15.5.9"
+    "prop-types": "^15.5.10"
   },
   "peerDependencies": {
-    "firebase": "^3.9.0",
+    "firebase": "^4.0.0",
     "inferno": "^3.1.2",
     "inferno-component": "^3.1.2",
     "inferno-create-element": "^3.1.2"

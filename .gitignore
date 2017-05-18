@@ -1,8 +1,8 @@
-coverage/
-node_modules/
-index.js
-Provider.js
-connect.js
-utils.js
-umd.js
-!src/*
+# Include your project-specific ignores in this file
+# Read about how to use .gitignore: https://help.github.com/articles/ignoring-files
+
+coverage
+.nyc-output
+dist
+node_modules
+npm-debug.log
