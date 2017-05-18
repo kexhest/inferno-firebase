@@ -68,8 +68,6 @@ A Inferno component class that passes subscriptions and actions as props to your
 
 #### Examples
 
-> Runnable examples can be found in the [examples folder](examples/).
-
 ##### Pass `todos` as a prop
 
   > Note: The value of `todos` is the path to your data in Firebase. This is equivalent to `firebase.database().ref('todo')`.
@@ -145,4 +143,4 @@ MIT © 2016 Magnus Bergman <hello@magnus.sexy> (https://magnus.sexy/)
 
 ## Acknowledgements
 
-[`react-firebase`](https://github.com/unfold/react-firebase) which this library is heavily inspired by.
+[`react-firebase`](https://github.com/unfold/react-firebase) which this library is a port of.
