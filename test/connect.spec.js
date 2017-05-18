@@ -127,11 +127,11 @@ describe('connect', () => {
     const firebaseApp = createMockApp(mockDatabase);
     const stub = renderStub({ mapFirebaseToProps, firebaseApp });
 
-    setTimeout(() => {
+    setImmediate(() => {
       expect(stub.getSubscriptionState()).toEqual({ foo: { bar: 'bar' } });
       expect(stub.getProps().foo).toEqual({ bar: 'bar' });
       done();
-    }, 0);
+    });
   });
 
   it('Should return null if a subscribed path does not exist', done => {
@@ -151,11 +151,11 @@ describe('connect', () => {
     const firebaseApp = createMockApp(mockDatabase);
     const stub = renderStub({ mapFirebaseToProps, firebaseApp });
 
-    setTimeout(() => {
+    setImmediate(() => {
       expect(stub.getSubscriptionState()).toEqual({ foo: null });
       expect(stub.getProps().foo).toEqual(null);
       done();
-    }, 0);
+    });
   });
 
   it('Should not pass unresolved subscriptions from result of mapFirebaseToProps', done => {
@@ -174,11 +174,11 @@ describe('connect', () => {
     const firebaseApp = createMockApp(mockDatabase);
     const stub = renderStub({ mapFirebaseToProps, firebaseApp });
 
-    setTimeout(() => {
+    setImmediate(() => {
       expect(stub.getSubscriptionState()).toEqual(null);
       expect(stub.getProps().foo).toEqual(undefined);
       done();
-    }, 0);
+    });
   });
 
   it('Should subscribe to a query', done => {
@@ -216,11 +216,11 @@ describe('connect', () => {
     const firebaseApp = createMockApp(mockDatabase);
     const stub = renderStub({ mapFirebaseToProps, firebaseApp });
 
-    setTimeout(() => {
+    setImmediate(() => {
       expect(stub.getSubscriptionState()).toEqual({ bar: 'bar value' });
       expect(stub.getProps().bar).toEqual('bar value');
       done();
-    }, 0);
+    });
   });
 
   it('Should correctly order subscription values if orderByChild was passed to query', done => {
@@ -266,7 +266,7 @@ describe('connect', () => {
     const firebaseApp = createMockApp(mockDatabase);
     const stub = renderStub({ mapFirebaseToProps, firebaseApp });
 
-    setTimeout(() => {
+    setImmediate(() => {
       expect(Object.keys(stub.getSubscriptionState().bar)).toEqual([
         'gamma',
         'beta',
@@ -278,7 +278,7 @@ describe('connect', () => {
         'alpha',
       ]);
       done();
-    }, 0);
+    });
   });
 
   it('Should not subscribe to functions', done => {
@@ -290,12 +290,12 @@ describe('connect', () => {
     const firebaseApp = createMockApp();
     const stub = renderStub({ mapFirebaseToProps, firebaseApp });
 
-    setTimeout(() => {
+    setImmediate(() => {
       expect(stub.getSubscriptionState()).toEqual({ foo: 'foo value' });
       expect(stub.getProps().foo).toEqual('foo value');
       expect(typeof stub.getProps().addFoo).toEqual('function');
       done();
-    }, 0);
+    });
   });
 
   it('Should unsubscribe when component unmounts', done => {
@@ -339,10 +339,10 @@ describe('connect', () => {
       { foo: 'foo prop' }
     );
 
-    setTimeout(() => {
+    setImmediate(() => {
       expect(stub.getProps().foo).toEqual('foo value');
       done();
-    }, 0);
+    });
   });
 
   it('Should update subscriptions when props change', done => {
@@ -353,7 +353,7 @@ describe('connect', () => {
     const first = () =>
       new Promise(resolve => {
         stub.setProps({ foo: 'foo' });
-        setTimeout(() => {
+        setImmediate(() => {
           expect(stub.getProps().foo).toEqual('foo value');
           expect(stub.getProps().bar).toEqual(undefined);
           expect(stub.getListeners().foo.path).toEqual('foo');
@@ -365,7 +365,7 @@ describe('connect', () => {
     const second = () =>
       new Promise(resolve => {
         stub.setProps({ foo: 'foo', bar: 'bar' });
-        setTimeout(() => {
+        setImmediate(() => {
           expect(stub.getProps().foo).toEqual('foo value');
           expect(stub.getProps().bar).toEqual('bar value');
           expect(stub.getListeners().foo.path).toEqual('foo');
@@ -377,7 +377,7 @@ describe('connect', () => {
     const third = () =>
       new Promise(resolve => {
         stub.setProps({ foo: 'foo', bar: 'baz' });
-        setTimeout(() => {
+        setImmediate(() => {
           expect(stub.getProps().foo).toEqual('foo value');
           expect(stub.getProps().bar).toEqual('baz value');
           expect(stub.getListeners().foo.path).toEqual('foo');
@@ -389,7 +389,7 @@ describe('connect', () => {
     const fourth = () =>
       new Promise(resolve => {
         stub.setProps({ bar: 'baz' });
-        setTimeout(() => {
+        setImmediate(() => {
           expect(stub.getProps().foo).toEqual(undefined);
           expect(stub.getProps().bar).toEqual('baz value');
           expect(stub.getListeners().foo).toEqual(undefined);
