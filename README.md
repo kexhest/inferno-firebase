@@ -137,10 +137,10 @@ Inferno.render(
 )
 ```
 
-### License
-
-MIT © 2016 Magnus Bergman <hello@magnus.sexy> (https://magnus.sexy/)
-
 ## Acknowledgements
 
 [`react-firebase`](https://github.com/unfold/react-firebase) which this library is a port of.
+
+### License
+
+[MIT](LICENSE) © [Magnus Bergman](https://magnus.sexy)
